@@ -226,7 +226,7 @@ footer{max-width:1120px;margin:0 auto;padding:18px 20px 34px;color:var(--muted);
     <div><b class="name">نبضِ وب</b><span class="tag">سنجشگر سرعت، پینگ و وضعیت سایت‌ها</span></div>
   </div>
   <div class="top-meta">
-    <span class="pill net"><i class="dot"></i> تحلیل از شبکهٔ کلودفلر</span>
+    <span class="pill net"><i class="dot"></i> تحلیل از شبکهٔ جهانی</span>
     <span class="clock" id="clock">--:--:--</span>
   </div>
 </header>
@@ -302,7 +302,7 @@ footer{max-width:1120px;margin:0 auto;padding:18px 20px 34px;color:var(--muted);
         <div class="sub" id="pingSub" style="text-align:center">—</div>
       </article>
       <article class="card stat reveal" style="--acc:var(--amber);--d:.19s">
-        <div class="lbl">پاسخ از شبکهٔ کلودفلر</div>
+        <div class="lbl">پاسخ از شبکهٔ جهانی</div>
         <div class="big"><span id="ttfbNum">—</span><small class="unit">ms</small></div>
         <div class="sub" id="ttfbSub">—</div>
       </article>
@@ -354,7 +354,7 @@ footer{max-width:1120px;margin:0 auto;padding:18px 20px 34px;color:var(--muted);
 </main>
 
 <footer>
-  نتایج از شبکهٔ جهانی کلودفلر و مرورگرِ شما نمونه‌برداری می‌شود و ممکن است در هر اجرا کمی متفاوت باشد · ساخته‌شده برای استقرار روی کلودفلر Pages
+  نتایج از شبکهٔ جهانی جهانی و مرورگرِ شما نمونه‌برداری می‌شود و ممکن است در هر اجرا کمی متفاوت باشد · ساخته‌شده برای استقرار روی جهانی
 </footer>
 
 <div id="toast" role="status"></div>
@@ -406,7 +406,7 @@ async function analyze(raw){
   setBtn(true);$('loading').hidden=false;stepText('در حال اتصال به شبکهٔ تحلیل…');
   let data;
   try{
-    stepText('دریافت وضعیت و سربرگ‌ها از شبکهٔ کلودفلر…');
+    stepText('دریافت وضعیت و سربرگ‌ها از شبکهٔ جهانی…');
     const r=await fetch('/api/check?url='+encodeURIComponent(target),{cache:'no-store'});
     data=await r.json();
   }catch{setBtn(false);$('loading').hidden=true;showError('ارتباط با سرور تحلیل‌گر برقرار نشد؛ دوباره تلاش کنید.');return;}
@@ -454,7 +454,7 @@ function render(d,p){
     $('pingSub').textContent='سنجش پینگ از مرورگر ممکن نشد';
   }
 
-  /* کلودفلر */
+  /* جهانی */
   countUp($('ttfbNum'),d.ttfb);
   const smin=Math.min(...d.samples);
   $('ttfbSub').innerHTML='سریع‌ترین نمونه: <b>'+fa(smin)+'</b> ms · تعداد نمونه: <b>'+fa(d.samples.length)+'</b>';
@@ -466,7 +466,7 @@ function render(d,p){
 
   /* نمودار نمونه‌ها */
   const useB=!!p,samples=useB?p.samples:d.samples;
-  $('barsTitle').textContent=useB?'نمونه‌های تأخیر از مرورگر شما':'نمونه‌های تأخیر از شبکهٔ کلودفلر';
+  $('barsTitle').textContent=useB?'نمونه‌های تأخیر از مرورگر شما':'نمونه‌های تأخیر از شبکهٔ جهانی';
   $('barsLegend').innerHTML=useB
     ?'<span class="mini">میانگین <b>'+fa(p.avg)+' ms</b></span><span class="mini">نوسان <b>'+fa(p.jitter)+' ms</b></span>'
     :'<span class="mini">میانگین <b>'+fa(Math.round(avg(d.samples)))+' ms</b></span>';
@@ -552,7 +552,7 @@ function filterHeaders(){
   });
 }
 function reportText(d,p){
-  const L=['گزارش نبض وب','آدرس: '+(d.finalUrl||d.url),'وضعیت HTTP: '+d.status+' ('+statusFa(d.status)+')','وب‌سرور: '+(d.server||'نامشخص'),'پاسخ از شبکهٔ کلودفلر: '+d.ttfb+' ms'];
+  const L=['گزارش نبض وب','آدرس: '+(d.finalUrl||d.url),'وضعیت HTTP: '+d.status+' ('+statusFa(d.status)+')','وب‌سرور: '+(d.server||'نامشخص'),'پاسخ از شبکهٔ جهانی: '+d.ttfb+' ms'];
   if(p)L.push('پینگ مرورگر: میانگین '+p.avg+' ms · بهترین '+p.min+' ms · بدترین '+p.max+' ms');
   if(d.dns)L.push('IPv4: '+(d.dns.ipv4.join(', ')||'-'));
   L.push('','سربرگ‌ها:');
