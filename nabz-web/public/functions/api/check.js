@@ -1,4 +1,4 @@
-// تابع کلودفلر Pages — مسیر نهایی: /api/check?url=...
+// تابع جهانی Pages — مسیر نهایی: /api/check?url=...
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 NabzWeb/1.0';
 
 function jsonOut(data, status = 200) {
@@ -91,7 +91,7 @@ export async function onRequest(context) {
 
   try { if (res.body) await res.body.cancel(); } catch { /* ignore */ }
 
-  // ۲) چند نمونهٔ اضافی برای سنجش تأخیر شبکهٔ کلودفلر
+  // ۲) چند نمونهٔ اضافی برای سنجش تأخیر شبکهٔ جهانی
   for (let i = 0; i < 3; i++) {
     try {
       const { res: r, ms } = await timedFetch(target, { headers: reqHeaders });
@@ -100,7 +100,7 @@ export async function onRequest(context) {
     } catch { break; }
   }
 
-  // ۳) resolving DNS از طریق DoH کلودفلر
+  // ۳) resolving DNS از طریق DoH جهانی
   try {
     const q = async (type, num) => {
       const d = await fetch(
