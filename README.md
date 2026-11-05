@@ -94,12 +94,12 @@ npx wrangler pages deploy public --project-name nabz-web
 
 ---
 
-### قدم ۶: اتصال دامنهٔ `parvaaz.ir`
+### قدم ۶: اتصال دامنهٔ `example.ir`
 
 اگر دامنه قبلاً به پروژهٔ قدیمی وصل بود:
 1. در داشبورد → پروژهٔ قدیمی → **Custom domains** → دامنه را حذف کنید.
-2. به پروژهٔ جدید (`nabz-web`) برو → تب **Custom domains** → دکمهٔ **Set up a custom domain** → بنویس `parvaaz.ir` → **Activate**.
-3. همین کار را برای `www.parvaaz.ir` تکرار کنید.
+2. به پروژهٔ جدید (`nabz-web`) برو → تب **Custom domains** → دکمهٔ **Set up a custom domain** → بنویس `example.ir` → **Activate**.
+3. همین کار را برای `www.example.ir` تکرار کنید.
 
 چند دقیقه برای فعال‌شدن SSL صبر کنید.
 
@@ -110,7 +110,7 @@ npx wrangler pages deploy public --project-name nabz-web
 **۱. تست تابع** — در مرورگر:
 
 ```
-https://parvaaz.ir/api/check?url=example.com
+https://example.ir/api/check?url=google.com
 ```
 
 باید متن JSON ببینی که با `{"ok":true` شروع می‌شود. ✅
